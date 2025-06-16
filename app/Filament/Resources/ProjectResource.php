@@ -57,6 +57,20 @@ class ProjectResource extends Resource
                     ->relationship('categories', 'name')
                     ->columns(2)
                     ->reactive()
+                    ->afterStateUpdated(function (callable $set) {
+                        $set('frontends', []);
+                    }),
+                CheckboxList::make('frontends')
+                    ->label('Frontend Tools')
+                    ->relationship('frontends', 'name')
+                    ->columns(2)
+                    ->visible(function (callable $get) {
+                        $categoryIds = $get('categories_id') ?? [];
+                        return \App\Models\Category::whereIn('id', $categoryIds)
+                            ->where('name', 'Frontend')
+                            ->exists();
+                    }),
+
             ]);
     }
 

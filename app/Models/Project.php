@@ -19,4 +19,9 @@ class Project extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function frontends()
+    {
+        return $this->belongsToMany(Frontend::class);
+    }
+
 }
