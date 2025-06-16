@@ -23,5 +23,9 @@ class Project extends Model
     {
         return $this->belongsToMany(Frontend::class);
     }
+    public function backends()
+    {
+        return $this->belongsToMany(Backend::class);
+    }
 
 }
