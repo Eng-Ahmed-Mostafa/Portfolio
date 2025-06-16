@@ -12,6 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\CheckboxList;
 use App\Filament\Resources\ProjectResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProjectResource\RelationManagers;
@@ -51,6 +52,11 @@ class ProjectResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('preview_code')
                     ->maxLength(255),
+                CheckboxList::make('categories_id')
+                    ->label('Categories')
+                    ->relationship('categories', 'name')
+                    ->columns(2)
+                    ->reactive()
             ]);
     }
 

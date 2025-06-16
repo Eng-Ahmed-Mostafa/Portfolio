@@ -13,4 +13,10 @@ class Project extends Model
         'preview_url',
         'preview_code',
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
 }
