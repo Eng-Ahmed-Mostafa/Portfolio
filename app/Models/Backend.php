@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Backend extends Model
 {
     protected $fillable = ['name'];
+    public function prodjects()
+    {
+        return $this->belongsToMany(Project::class);
+    }
 }
